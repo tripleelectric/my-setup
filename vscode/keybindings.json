@@ -1,0 +1,77 @@
+// Place your key bindings in this file to override the defaults
+[
+    // --- Legacy / Existing Bindings ---
+    {
+        "key": "cmd+backspace",
+        "command": "editor.action.deleteLines",
+        "when": "textInputFocus && !editorReadonly"
+        // Cmd+Backspace deletes the current line.
+    },
+    {
+        "key": "shift+cmd+k",
+        "command": "-editor.action.deleteLines",
+        "when": "textInputFocus && !editorReadonly"
+        // Removes the default Shift+Cmd+K binding for deleting lines (to avoid conflict).
+    },
+    {
+        "key": "shift+cmd+backspace",
+        "command": "deleteAllLeft",
+        "when": "textInputFocus && !editorReadonly"
+        // Shift+Cmd+Backspace deletes everything to the left of the cursor.
+    },
+    {
+        "key": "cmd+backspace",
+        "command": "-deleteAllLeft",
+        "when": "textInputFocus && !editorReadonly"
+        // Removes Cmd+Backspace as "delete all left" (so it can be used for delete line instead).
+    },
+    // --- Python Smart Run Bindings ---
+    {
+        // "key": "ctrl+r",
+        // "command": "workbench.action.tasks.runTask",
+        // "args": "python current file",
+        // "when": "editorLangId == python && resourceFilename !~ /test_.+\\.py/ && resourceFilename !~ /.+_test\\.py/"
+        // Ctrl+R in a normal Python file runs it with plain `python file.py` (no conda run).
+    },
+    {
+        "key": "ctrl+r",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": {
+            "text": "python \"${file}\"\u000D"
+        },
+        "when": "editorLangId == python && resourceFilename !~ /test_.+\\.py/ && resourceFilename !~ /.+_test\\.py/"
+    },
+    {
+        "key": "ctrl+r",
+        "command": "python.testing.runCurrentFile",
+        "when": "editorLangId == python && (resourceFilename =~ /test_.+\\.py/ || resourceFilename =~ /.+_test\\.py/)"
+        // Ctrl+R in a Python *test file* runs pytest on that file.
+    },
+    {
+        "key": "ctrl+shift+r",
+        "command": "workbench.action.tasks.runTask",
+        "args": "pytest watch",
+        "when": "editorLangId == python"
+        // Ctrl+Shift+R starts pytest-watch in background for continuous test reruns.
+    },
+    {
+        "key": "shift+cmd+k",
+        "command": "git.commit",
+        "when": "!operationInProgress"
+    },
+    // --- JavaScript / TypeScript Smart Run Bindings ---
+    // {
+    //     "key": "ctrl+r",
+    //     "command": "workbench.action.tasks.runTask",
+    //     "args": "jest current file",
+    //     "when": "editorLangId =~ /typescriptreact|typescript|javascriptreact|javascript/ && resourceFilename =~ /.*\\.test\\.(t|j)sx?/"
+    //     // Ctrl+R in a JS/TS test file runs Jest on that file.
+    // },
+    // {
+    //     "key": "ctrl+r",
+    //     "command": "workbench.action.tasks.runTask",
+    //     "args": "node current file",
+    //     "when": "editorLangId =~ /typescript|javascript/ && resourceFilename !~ /.*\\.test\\.(t|j)sx?/"
+    //     // Ctrl+R in a normal JS/TS file runs it with Node.
+    // }
+]
