@@ -435,3 +435,9 @@ yth() {
 💡 TIP: Use quotes around URLs with special characters!
 EOF
 }
+
+# Interact with my-setup repo
+
+# Export VSC extensions
+alias vsc-export-extensions='code --list-extensions > ~/my-setup/vscode/extensions.txt && echo "✅ VSCode extensions exported"'
+
