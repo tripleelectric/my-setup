@@ -126,6 +126,10 @@
         "editor.tabSize": 2,
         "editor.insertSpaces": true
     },
+    "[javascriptreact]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true
+    },
     "[jsonc]": {
         "editor.defaultFormatter": "vscode.json-language-features"
     },
