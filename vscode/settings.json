@@ -174,5 +174,7 @@
         "~/Learning"
     ],
     "notebook.output.minimalErrorRendering": true,
-    "notebook.output.scrolling": true
+    "notebook.output.scrolling": false,
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "notebook.backup.sizeLimit": 0 // 10000
 }
