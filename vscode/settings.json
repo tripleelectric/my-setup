@@ -171,7 +171,8 @@
     "projectManager.git.baseFolders": [
         "~/Projects",
         "~/PyCharmProjects",
-        "~/Learning"
+        "~/Learning",
+        "~/my-setup"
     ],
     "notebook.output.minimalErrorRendering": true,
     "notebook.output.scrolling": false,
