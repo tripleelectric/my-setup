@@ -10,6 +10,7 @@ dbaeumer.vscode-eslint
 eamodio.gitlens
 esbenp.prettier-vscode
 formulahendry.code-runner
+google.geminicodeassist
 humao.rest-client
 k--kato.intellij-idea-keybindings
 mechatroner.rainbow-csv
@@ -34,5 +35,6 @@ mtxr.sqltools
 pkief.material-icon-theme
 prisma.prisma
 tamasfe.even-better-toml
+whatwedo.twig
 xdebug.php-debug
 yzhang.markdown-all-in-one

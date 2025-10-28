@@ -99,6 +99,9 @@
         "editor.tabSize": 4,
         "editor.insertSpaces": true
     },
+    "[php]": {
+        "editor.defaultFormatter": "junstyle.php-cs-fixer"
+    },
     "[javascript]": {
         "editor.tabSize": 2,
         "editor.insertSpaces": true,
@@ -177,5 +180,40 @@
     "notebook.output.minimalErrorRendering": true,
     "notebook.output.scrolling": false,
     "editor.defaultFormatter": "ms-python.black-formatter",
-    "notebook.backup.sizeLimit": 0 // 10000
+    "notebook.backup.sizeLimit": 0,
+    // "[php]": {
+    //     "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+    // },
+    // PHP Executable
+    "php.validate.executablePath": "/usr/local/bin/php",
+    "php.executablePath": "/usr/local/bin/php",
+    // Intelephense
+    "intelephense.completion.fullyQualifyGlobalConstantsAndFunctions": true,
+    "intelephense.diagnostics.undefinedTypes": false,
+    "intelephense.files.associations": [
+        "*.php",
+        "*.phtml",
+        "*.module",
+        "*.inc"
+    ],
+    // PHPStan (Global)
+    "phpstan.enabled": true,
+    "phpstan.path": "~/.composer/vendor/bin/phpstan",
+    "phpstan.level": 7,
+    "phpstan.projectFile": null,
+    "phpstan.autoload": true,
+    "phpstan.checkOnSave": true,
+    "phpstan.analysisMode": "openedFilesOnly",
+    "phpstan.memoryLimit": "2G",
+    "phpstan.options": "--no-progress",
+    // PHP CS Fixer (PSR-12)
+    "php-cs-fixer.executablePath": "~/.composer/vendor/bin/php-cs-fixer",
+    "php-cs-fixer.onsave": true,
+    "php-cs-fixer.rules": "@PSR12",
+    // Editor
+    "files.associations": {
+        "*.php": "php"
+    },
+    "geminicodeassist.inlineSuggestions.enableAuto": true,
+    "geminicodeassist.displayInlineContextHint": false // 10000
 }
