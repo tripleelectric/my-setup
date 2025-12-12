@@ -1,0 +1,229 @@
+{
+    "security.workspace.trust.untrustedFiles": "open",
+    "workbench.startupEditor": "none",
+    "window.zoomLevel": 0,
+    "accessibility.signals.lineHasError": {
+        "sound": "off",
+        "announcement": "off"
+    },
+    "accessibility.signalOptions.volume": 0,
+    "editor.minimap.enabled": false,
+    "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Cascadia Code', monospace",
+    "editor.fontLigatures": true,
+    "files.exclude": {
+        // "**/node_modules": true,
+        "**/.git": true,
+        "**/.next": true,
+        "**/__pycache__": true,
+        "**/.pytest_cache": true,
+        "**/.vscode": true
+    },
+    "editor.rulers": [
+        88
+    ],
+    "editor.renderWhitespace": "none",
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": false,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "explicit",
+        "source.fixAll": "explicit"
+    },
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.autoSave": "onFocusChange",
+    "editor.autoClosingBrackets": "always",
+    "editor.acceptSuggestionOnEnter": "on",
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "editor.snippetSuggestions": "top",
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": false,
+        "strings": false
+    },
+    "editor.suggestOnTriggerCharacters": true,
+    "editor.quickSuggestionsDelay": 100,
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    "terminal.integrated.fontSize": 13,
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "code-runner.runInTerminal": true,
+    "code-runner.executorMap": {
+        "python": "python"
+    },
+    "code-runner.clearPreviousOutput": true,
+    "code-runner.saveFileBeforeRun": true,
+    // Testing
+    "python.testing.pytestEnabled": true,
+    "python.testing.pytestArgs": [
+        "tests"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.nosetestsEnabled": false,
+    // Python
+    "python.terminal.activateEnvironment": false,
+    "python.condaPath": "conda",
+    "python.terminal.launchArgs": [],
+    "python.defaultInterpreterPath": "python3",
+    "python.languageServer": "Pylance",
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.diagnosticMode": "workspace",
+    "python.analysis.completeFunctionParens": true,
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.inlayHints.functionReturnTypes": false,
+    "python.analysis.inlayHints.variableTypes": false,
+    "python.linting.enabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8CategorySeverity.W": "Warning",
+    "python.linting.flake8CategorySeverity.E": "Error",
+    "python.linting.ignorePatterns": [
+        "**/site-packages/**",
+        "**/.**pytest_cache/**"
+    ],
+    // Jupyter
+    "jupyter.notebookFileRoot": "${workspaceFolder}",
+    "jupyter.askForKernelRestart": false,
+    // isort
+    "isort.args": [
+        "--profile",
+        "black"
+    ],
+    // Language-specific formatting
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.tabSize": 4,
+        "editor.insertSpaces": true
+    },
+    "[php]": {
+        "editor.defaultFormatter": "junstyle.php-cs-fixer"
+    },
+    "[javascript]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true
+    },
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features",
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true
+    },
+    "[markdown]": {
+        "editor.wordWrap": "on",
+        "editor.quickSuggestions": {
+            "other": true,
+            "comments": true,
+            "strings": true
+        },
+        "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+    },
+    "[typescriptreact]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true
+    },
+    "[javascriptreact]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "chat.agent.enabled": false,
+    "chat.disableAIFeatures": true,
+    "editor.tabCompletion": "onlySnippets",
+    "editor.autoClosingQuotes": "always",
+    "editor.autoSurround": "languageDefined",
+    "editor.jumpToBracket": "tab",
+    "tabout.enable": true,
+    "tabout.tabKey": "tab",
+    "tabout.pairs": [
+        [
+            "\"",
+            "\""
+        ],
+        [
+            "'",
+            "'"
+        ],
+        [
+            "`",
+            "`"
+        ],
+        [
+            "(",
+            ")"
+        ],
+        [
+            "[",
+            "]"
+        ],
+        [
+            "{",
+            "}"
+        ]
+    ],
+    "explorer.confirmDragAndDrop": false,
+    "projectManager.git.baseFolders": [
+        "~/Projects",
+        "~/PyCharmProjects",
+        "~/Learning",
+        "~/my-setup"
+    ],
+    "notebook.output.minimalErrorRendering": true,
+    "notebook.output.scrolling": false,
+    "notebook.backup.sizeLimit": 0,
+    // "[php]": {
+    //     "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+    // },
+    // PHP Executable
+    "php.validate.executablePath": "/usr/local/bin/php",
+    "php.executablePath": "/usr/local/bin/php",
+    // Intelephense
+    "intelephense.completion.fullyQualifyGlobalConstantsAndFunctions": true,
+    "intelephense.diagnostics.undefinedTypes": false,
+    "intelephense.files.associations": [
+        "*.php",
+        "*.phtml",
+        "*.module",
+        "*.inc"
+    ],
+    // PHPStan (Global)
+    "phpstan.enabled": true,
+    "phpstan.path": "~/.composer/vendor/bin/phpstan",
+    "phpstan.level": 7,
+    "phpstan.projectFile": null,
+    "phpstan.autoload": true,
+    "phpstan.checkOnSave": true,
+    "phpstan.analysisMode": "openedFilesOnly",
+    "phpstan.memoryLimit": "2G",
+    "phpstan.options": "--no-progress",
+    // PHP CS Fixer (PSR-12)
+    "php-cs-fixer.executablePath": "~/.composer/vendor/bin/php-cs-fixer",
+    "php-cs-fixer.onsave": true,
+    "php-cs-fixer.rules": "@PSR12",
+    // Editor
+    "files.associations": {
+        "*.php": "php",
+        "*.prisma": "prisma",
+        ".env": "dotenv",
+        ".env.*": "dotenv"
+    },
+    "geminicodeassist.inlineSuggestions.enableAuto": true,
+    "geminicodeassist.displayInlineContextHint": false,
+    "claudeCode.preferredLocation": "panel", // 10000
+    "[prisma]": {
+        "editor.defaultFormatter": "Prisma.prisma",
+        "editor.formatOnSave": true,
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.autoIndent": "full"
+    },
+    "prisma.fileWatcher": true
+}
