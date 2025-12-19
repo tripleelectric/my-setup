@@ -68,7 +68,7 @@
     "python.terminal.activateEnvironment": false,
     "python.condaPath": "conda",
     "python.terminal.launchArgs": [],
-    "python.defaultInterpreterPath": "python3",
+    "python.defaultInterpreterPath": "/usr/local/bin/python3",
     "python.languageServer": "Pylance",
     "python.analysis.typeCheckingMode": "basic",
     "python.analysis.diagnosticMode": "workspace",
@@ -83,6 +83,10 @@
     "python.linting.ignorePatterns": [
         "**/site-packages/**",
         "**/.**pytest_cache/**"
+    ],
+    // Flake 8
+    "flake8.args": [
+        "--max-line-length=88"
     ],
     // Jupyter
     "jupyter.notebookFileRoot": "${workspaceFolder}",
@@ -225,5 +229,6 @@
         "editor.insertSpaces": true,
         "editor.autoIndent": "full"
     },
-    "prisma.fileWatcher": true
+    "prisma.fileWatcher": true,
+    "http.systemCertificatesNode": true
 }
