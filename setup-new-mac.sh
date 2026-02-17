@@ -12,7 +12,7 @@
 #
 # What this installs & configures:
 #   • Homebrew (Apple Silicon path)
-#   • iTerm2 + MesloLGS Nerd Font
+#   • Brew bundle (all formulae + casks from Brewfile)
 #   • Oh My Zsh + Powerlevel10k + zsh-autosuggestions
 #   • Symlinks for .zshrc, .p10k.zsh, VS Code settings/keybindings
 #   • VS Code extensions from extensions.txt
@@ -71,20 +71,22 @@ brew update
 success "Homebrew ready."
 
 ########################################
-# 2. iTerm2 + FONT
+# 2. BREW BUNDLE (all formulae + casks)
 ########################################
-info "Step 2/9: iTerm2 + MesloLGS Nerd Font"
+info "Step 2/9: Brew bundle (formulae + casks)"
 
-brew install --cask iterm2 2>/dev/null || success "iTerm2 already installed."
-brew install --cask font-meslo-lg-nerd-font 2>/dev/null || success "MesloLGS NF already installed."
+if [[ -f "$REPO_DIR/Brewfile" ]]; then
+    brew bundle --file="$REPO_DIR/Brewfile"
+    success "Brew bundle complete."
+else
+    fail "Brewfile not found at $REPO_DIR/Brewfile"
+fi
 
 # Import iTerm2 profiles if available
 if [[ -f "$REPO_DIR/iterm/com.googlecode.iterm2.plist" ]]; then
     info "iTerm2 plist found — it will be symlinked after iTerm2 is quit."
     info "(iTerm2 overwrites its plist on quit, so close iTerm2 first if importing.)"
 fi
-
-success "iTerm2 + font ready."
 
 ########################################
 # 3. OH MY ZSH
@@ -193,12 +195,8 @@ fi
 info "Step 7/9: fnm (Fast Node Manager)"
 
 if ! command -v fnm &>/dev/null; then
-    if command -v brew &>/dev/null; then
-        brew install fnm
-    else
-        curl -fsSL https://fnm.vercel.app/install | bash
-    fi
-    success "fnm installed."
+    warn "fnm not found — it should have been installed via Brewfile in step 2."
+    warn "Try: brew install fnm"
 else
     success "fnm already installed."
 fi
