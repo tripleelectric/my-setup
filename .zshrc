@@ -113,37 +113,25 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
-
-# NVM
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-# export PATH="/opt/anaconda3/bin:$PATH"  # commented out by conda initialize
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/opt/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/anaconda3/bin:$PATH"
-    fi
+# --- Node Version Manager (fnm) ---
+# This loads fnm and ensures it uses the node version in your .node-version file
+if command -v fnm &> /dev/null; then
+  eval "$(fnm env --use-on-cd --shell zsh)"
 fi
-unset __conda_setup
-# <<< conda initialize <<<
-# Interact with my-setup repo
 
-# Export VSC extensions
+# --- pnpm Setup ---
+export PNPM_HOME="$HOME/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+# Ensure global pnpm binaries are accessible
+export PATH="$HOME/.pnpm-global/bin:$PATH"
+
+# --- Aliases & Local Env ---
 alias vsc-export-extensions='code --list-extensions > ~/my-setup/vscode/extensions.txt && echo "✅ VSCode extensions exported"'
+[ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
 
-
-# --- fnm (Fast Node Manager) ---
-eval "$(fnm env --use-on-cd --shell zsh)"
-
-. "$HOME/.local/bin/env"
+# --- Theme (Must be at the very end) ---
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

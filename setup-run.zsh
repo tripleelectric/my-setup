@@ -20,6 +20,9 @@ else
   echo "⚠️  .zshrc not found after linking — check path!"
 fi
 
+# Configure git (user, global gitignore)
+bash ~/my-setup/scripts/setup-git.sh
+
 # Ensure VSCode CLI is available
 if ! command -v code >/dev/null 2>&1; then
   echo "❌ VSCode CLI ('code') not found."
