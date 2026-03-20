@@ -90,3 +90,10 @@ cython_debug/
 
 data/
 data/
+
+# Node, JS, TS
+node_modules/
+dist/
+.env
+.env.local
+*.tsbuildinfo

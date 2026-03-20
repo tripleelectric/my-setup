@@ -234,5 +234,7 @@
         "editor.autoIndent": "full"
     },
     "prisma.fileWatcher": true,
-    "http.systemCertificatesNode": true
+    "http.systemCertificatesNode": true,
+    "chat.viewSessions.orientation": "stacked",
+    "claudeCode.selectedModel": "default"
 }
