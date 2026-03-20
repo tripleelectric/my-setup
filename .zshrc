@@ -135,3 +135,12 @@ alias vsc-export-extensions='code --list-extensions > ~/my-setup/vscode/extensio
 
 # --- Theme (Must be at the very end) ---
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+pull() {
+  if [[ "$1" == "gi" ]]; then
+    cp ~/my-setup/.gitignore .
+    echo "✅ .gitignore copied to $(pwd)"
+  else
+    echo "Usage: pull gi"
+  fi
+}

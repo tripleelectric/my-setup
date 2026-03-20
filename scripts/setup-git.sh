@@ -33,3 +33,13 @@ echo "✅ Git user: $current_name <$current_email>"
 cp ~/my-setup/.gitignore_global ~/.gitignore_global
 git config --global core.excludesfile ~/.gitignore_global
 echo "✅ Installed global gitignore at ~/.gitignore_global"
+
+# Function to pull default .gitignore to the current directory
+pull() {
+  if [[ "$1" == "gi" ]]; then
+    cp ~/my-setup/.gitignore .
+    echo "✅ .gitignore copied to $(pwd)"
+  else
+    echo "Usage: pull gi"
+  fi
+}
