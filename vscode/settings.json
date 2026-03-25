@@ -69,33 +69,10 @@
     "python.condaPath": "conda",
     "python.terminal.launchArgs": [],
     "python.defaultInterpreterPath": "/usr/local/bin/python3",
-    "python.languageServer": "Pylance",
-    "python.analysis.typeCheckingMode": "basic",
-    "python.analysis.diagnosticMode": "workspace",
-    "python.analysis.completeFunctionParens": true,
-    "python.analysis.autoImportCompletions": true,
-    "python.analysis.inlayHints.functionReturnTypes": false,
-    "python.analysis.inlayHints.variableTypes": false,
-    "python.linting.enabled": true,
-    "python.linting.flake8Enabled": true,
-    "python.linting.flake8CategorySeverity.W": "Warning",
-    "python.linting.flake8CategorySeverity.E": "Error",
-    "python.linting.ignorePatterns": [
-        "**/site-packages/**",
-        "**/.**pytest_cache/**"
-    ],
-    // Flake 8
-    "flake8.args": [
-        "--max-line-length=88"
-    ],
+    "python.languageServer": "Jedi",
     // Jupyter
     "jupyter.notebookFileRoot": "${workspaceFolder}",
     "jupyter.askForKernelRestart": false,
-    // isort
-    "isort.args": [
-        "--profile",
-        "black"
-    ],
     // Language-specific formatting
     "[python]": {
         "editor.tabSize": 4,
