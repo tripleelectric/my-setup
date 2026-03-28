@@ -119,7 +119,9 @@
         "editor.insertSpaces": true
     },
     "[jsonc]": {
-        "editor.defaultFormatter": "vscode.json-language-features"
+        "editor.defaultFormatter": "vscode.json-language-features",
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true
     },
     "chat.agent.enabled": false,
     "editor.tabCompletion": "onlySnippets",
