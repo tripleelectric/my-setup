@@ -97,3 +97,15 @@ dist/
 .env
 .env.local
 *.tsbuildinfo
+
+
+__tutorial*
+
+claude.md
+CLAUDE.md
+
+**/claude.md
+**/CLAUDE.md
+
+docs/
+*/.claude/

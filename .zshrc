@@ -144,3 +144,6 @@ pull() {
     echo "Usage: pull gi"
   fi
 }
+
+# --- Colima ---
+export DOCKER_HOST="unix://${HOME}/.colima/default/docker.sock"
