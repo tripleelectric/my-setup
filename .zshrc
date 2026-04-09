@@ -147,3 +147,8 @@ pull() {
 
 # --- Colima ---
 export DOCKER_HOST="unix://${HOME}/.colima/default/docker.sock"
+
+
+# --- gh alias ---
+# better formatting for `gh pr list`
+alias gprs='gh pr list --json title,headRefName,baseRefName --template "{{range .}}{{tablerow .title (printf \"[%s → %s]\" .headRefName .baseRefName)}}{{end}}"'
