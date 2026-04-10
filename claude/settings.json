@@ -1,0 +1,33 @@
+{
+  "statusLine": {
+    "type": "command",
+    "command": "bash /Users/adrian/.claude/statusline-command.sh"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(curl -s -L \"https://www.prodigi.com/print-api/\")",
+      "Bash(curl -s -L \"https://www.prodigi.com/print-api/docs/\")",
+      "Bash(curl -s -L \"https://www.prodigi.com/print-api/docs/reference/\")",
+      "WebFetch(domain:www.prodigi.com)",
+      "Bash(python3 -c \"from app.services.product_catalog import PRODUCTS; print\\(f''{len\\(PRODUCTS\\)} products:''\\); [print\\(f''  {k}: {v.name} — {v.price_display} \\(SKU: {v.prodigi_sku}\\)''\\) for k,v in PRODUCTS.items\\(\\)]\")",
+      "Bash(npx tsc:*)",
+      "Bash(git add:*)",
+      "Bash(pip install:*)",
+      "Bash(pip3 install:*)",
+      "Bash(python3 -m pytest tests/ -v --tb=short)",
+      "Bash(uv --version)",
+      "Bash(uv run:*)",
+      "Bash(find /Users/adrian/Projects/cinemagic -name \"pyproject.toml\" -exec cat {} \\\\;)",
+      "Read(//Users/adrian/.claude/plans/**)",
+      "Bash(git commit -m ':*)"
+    ],
+    "additionalDirectories": [
+      "/Users/adrian/.claude/plans"
+    ]
+  },
+  "enabledPlugins": {
+    "frontend-design@claude-plugins-official": true
+  },
+  "effortLevel": "medium",
+  "skipDangerousModePermissionPrompt": true
+}
