@@ -1,8 +1,4 @@
 {
-  "statusLine": {
-    "type": "command",
-    "command": "bash /Users/adrian/.claude/statusline-command.sh"
-  },
   "permissions": {
     "allow": [
       "Bash(curl -s -L \"https://www.prodigi.com/print-api/\")",
@@ -25,9 +21,14 @@
       "/Users/adrian/.claude/plans"
     ]
   },
+  "statusLine": {
+    "type": "command",
+    "command": "bash /Users/adrian/.claude/statusline-command.sh"
+  },
   "enabledPlugins": {
     "frontend-design@claude-plugins-official": true
   },
   "effortLevel": "medium",
-  "skipDangerousModePermissionPrompt": true
+  "skipDangerousModePermissionPrompt": true,
+  "model": "sonnet"
 }

@@ -16,6 +16,7 @@
 #   • Oh My Zsh + Powerlevel10k + zsh-autosuggestions
 #   • Symlinks for .zshrc, .p10k.zsh, VS Code settings/keybindings
 #   • VS Code extensions from extensions.txt
+#   • Claude Code settings.json + skills
 #   • fnm (Fast Node Manager) — replaces your old NVM setup
 #   • uv (fast Python package manager)
 #   • iTerm2 profile import
@@ -51,7 +52,7 @@ echo ""
 ########################################
 # 1. HOMEBREW
 ########################################
-info "Step 1/9: Homebrew"
+info "Step 1/10: Homebrew"
 
 if ! command -v brew &>/dev/null; then
     info "Installing Homebrew..."
@@ -73,7 +74,7 @@ success "Homebrew ready."
 ########################################
 # 2. BREW BUNDLE (all formulae + casks)
 ########################################
-info "Step 2/9: Brew bundle (formulae + casks)"
+info "Step 2/10: Brew bundle (formulae + casks)"
 
 if [[ -f "$REPO_DIR/Brewfile" ]]; then
     brew bundle --file="$REPO_DIR/Brewfile"
@@ -91,7 +92,7 @@ fi
 ########################################
 # 3. OH MY ZSH
 ########################################
-info "Step 3/9: Oh My Zsh"
+info "Step 3/10: Oh My Zsh"
 
 if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
@@ -113,7 +114,7 @@ fi
 ########################################
 # 4. POWERLEVEL10K
 ########################################
-info "Step 4/9: Powerlevel10k"
+info "Step 4/10: Powerlevel10k"
 
 P10K_DIR="$ZSH_CUSTOM/themes/powerlevel10k"
 if [[ ! -d "$P10K_DIR" ]]; then
@@ -126,7 +127,7 @@ fi
 ########################################
 # 5. SYMLINK DOTFILES
 ########################################
-info "Step 5/9: Symlink dotfiles"
+info "Step 5/10: Symlink dotfiles"
 
 # .zshrc — but first patch it for Apple Silicon + fnm
 # Your old .zshrc references NVM at /usr/local/opt/nvm (Intel Homebrew path).
@@ -158,7 +159,7 @@ fi
 ########################################
 # 6. VS CODE SETTINGS + EXTENSIONS
 ########################################
-info "Step 6/9: VS Code"
+info "Step 6/10: VS Code"
 
 VSCODE_USER_DIR="$HOME/Library/Application Support/Code/User"
 mkdir -p "$VSCODE_USER_DIR"
@@ -190,9 +191,57 @@ else
 fi
 
 ########################################
-# 7. FNM (replaces NVM — faster on M4)
+# 7. CLAUDE CODE CONFIG + SKILLS
 ########################################
-info "Step 7/9: fnm (Fast Node Manager)"
+info "Step 7/10: Claude Code config + skills"
+
+CLAUDE_DIR="$HOME/.claude"
+CLAUDE_SKILLS_DIR="$CLAUDE_DIR/skills"
+
+mkdir -p "$CLAUDE_DIR" "$CLAUDE_SKILLS_DIR"
+
+# Helper: safely symlink a file from the repo.
+# - If target doesn't exist: create symlink.
+# - If target is already a symlink to our repo file: re-link (idempotent).
+# - If target is anything else (custom file, symlink elsewhere): warn and skip.
+safe_link_claude() {
+    local src="$1"
+    local dest="$2"
+    local label="$3"
+    if [[ -L "$dest" && "$(readlink "$dest")" == "$src" ]]; then
+        # Already linked correctly — re-link to ensure it's current
+        ln -sf "$src" "$dest"
+        success "$label (already linked, refreshed)"
+    elif [[ -e "$dest" || -L "$dest" ]]; then
+        warn "$label exists and is not from this repo — skipping to avoid overwrite"
+    else
+        ln -sf "$src" "$dest"
+        success "Linked $label"
+    fi
+}
+
+# settings.json
+if [[ -f "$REPO_DIR/claude/settings.json" ]]; then
+    safe_link_claude "$REPO_DIR/claude/settings.json" "$CLAUDE_DIR/settings.json" "~/.claude/settings.json"
+else
+    warn "claude/settings.json not found in repo — skipping."
+fi
+
+# Symlink each skill file individually (preserves any existing skills not in repo)
+if [[ -d "$REPO_DIR/claude/skills" ]]; then
+    for skill_file in "$REPO_DIR/claude/skills"/*; do
+        [[ -e "$skill_file" ]] || continue  # skip if glob matches nothing
+        skill_name="$(basename "$skill_file")"
+        safe_link_claude "$skill_file" "$CLAUDE_SKILLS_DIR/$skill_name" "skill: $skill_name"
+    done
+else
+    warn "claude/skills/ not found in repo — skipping."
+fi
+
+########################################
+# 8. FNM (replaces NVM — faster on M4)
+########################################
+info "Step 8/10: fnm (Fast Node Manager)"
 
 if ! command -v fnm &>/dev/null; then
     warn "fnm not found — it should have been installed via Brewfile in step 2."
@@ -219,9 +268,9 @@ if command -v fnm &>/dev/null; then
 fi
 
 ########################################
-# 8. UV (Python package manager)
+# 9. UV (Python package manager)
 ########################################
-info "Step 8/9: uv (Python)"
+info "Step 9/10: uv (Python)"
 
 if ! command -v uv &>/dev/null; then
     curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -241,9 +290,9 @@ UVBLOCK
 fi
 
 ########################################
-# 9. CRON + FINAL TOUCHES
+# 10. CRON + FINAL TOUCHES
 ########################################
-info "Step 9/9: Cron job + cleanup"
+info "Step 10/10: Cron job + cleanup"
 
 # Set up daily VS Code extension export cron
 CRON_CMD='0 9 * * * /usr/local/bin/code --list-extensions > ~/my-setup/vscode/extensions.txt 2>/dev/null'
